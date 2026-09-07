@@ -1,0 +1,91 @@
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class TaskAdapter extends TypeAdapter<Task> {
+  @override
+  final int typeId = 1;
+
+  @override
+  Task read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Task(
+      id: fields[0] as String,
+      title: fields[1] as String,
+      description: fields[2] as String?,
+      type: fields[3] as TaskType,
+      priority: fields[4] as TaskPriority,
+      status: fields[5] as TaskStatus,
+      dueDate: fields[6] as DateTime,
+      startDate: fields[7] as DateTime?,
+      completedDate: fields[8] as DateTime?,
+      plantId: fields[9] as String?,
+      gardenId: fields[10] as String?,
+      isRecurring: fields[11] as bool,
+      recurrenceInterval: fields[12] as int?,
+      recurrenceUnit: fields[13] as String?,
+      hasReminder: fields[14] as bool,
+      reminderDate: fields[15] as DateTime?,
+      notes: fields[16] as String?,
+      createdAt: fields[17] as DateTime?,
+      updatedAt: fields[18] as DateTime?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Task obj) {
+    writer
+      ..writeByte(19)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.title)
+      ..writeByte(2)
+      ..write(obj.description)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.priority)
+      ..writeByte(5)
+      ..write(obj.status)
+      ..writeByte(6)
+      ..write(obj.dueDate)
+      ..writeByte(7)
+      ..write(obj.startDate)
+      ..writeByte(8)
+      ..write(obj.completedDate)
+      ..writeByte(9)
+      ..write(obj.plantId)
+      ..writeByte(10)
+      ..write(obj.gardenId)
+      ..writeByte(11)
+      ..write(obj.isRecurring)
+      ..writeByte(12)
+      ..write(obj.recurrenceInterval)
+      ..writeByte(13)
+      ..write(obj.recurrenceUnit)
+      ..writeByte(14)
+      ..write(obj.hasReminder)
+      ..writeByte(15)
+      ..write(obj.reminderDate)
+      ..writeByte(16)
+      ..write(obj.notes)
+      ..writeByte(17)
+      ..write(obj.createdAt)
+      ..writeByte(18)
+      ..write(obj.updatedAt);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TaskAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
