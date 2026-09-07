@@ -14,12 +14,14 @@ dependencies:
   provider: ^6.1.1
   
   # Database
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  
+  #hive: ^4.2.1
+  #hive_flutter: ^1.1.0
+  hive: ^4.0.0
+  hive_flutter: ^1.1.0  # Extension pour Flutter
+
   # UI Components
   flutter_slidable: ^3.0.0
-  intl: ^0.18.1
+  intl: ^0.20.3
   date_picker_plus: ^3.0.0
   
   # Icons
