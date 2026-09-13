@@ -1,6 +1,6 @@
 # Jardin App - Gestion de Jardin
 
-Une application Flutter complète pour la gestion de votre jardin d'agrément et potager. Fonctionne sur mobile (Android, iOS) et desktop (Windows, Mac, Linux).
+Une application Flutter complète pour la gestion de votre jardin d'agrément et potager. Ne Fonctionne pas du tout ( sur mobile (Android, iOS) et desktop (Windows, Mac, Linux)).
 
 ## Fonctionnalités
 
