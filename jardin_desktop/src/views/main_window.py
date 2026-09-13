@@ -11,7 +11,8 @@ from PyQt6.QtCore import Qt, pyqtSignal, QSize
 from PyQt6.QtGui import QAction, QIcon, QPixmap
 from typing import Optional, List
 
-from ..database.database_manager import DatabaseManager
+
+from ..database_manager import DatabaseManager
 from ..models.plant import Plant, PlantType, SoilType, SunExposure
 from ..models.task import Task, TaskType, TaskStatus
 from ..models.harvest import Harvest
@@ -21,6 +22,7 @@ from .task_dialog import TaskDialog
 from .harvest_dialog import HarvestDialog
 from .garden_dialog import GardenDialog
 from ..utils.helpers import format_date_french, get_season
+from datetime import date
 
 
 class MainWindow(QMainWindow):
@@ -44,7 +46,7 @@ class MainWindow(QMainWindow):
         """
         super().__init__()
         self.db = db_manager
-        self.setWindowTitle("Jardin Desktop - Gestion de jardin et potager")
+        self.setWindowTitle("Jardin Desktop - Gestion de jardin d'agrement et potager")
         self.setMinimumSize(1024, 768)
         
         # Initialiser l'interface
