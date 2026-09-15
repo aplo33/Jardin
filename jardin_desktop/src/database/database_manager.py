@@ -2,13 +2,12 @@
 Gestionnaire de la base de données SQLite pour l'application Jardin.
 """
 import sqlite3
-import os
 from typing import List, Optional, Dict, Any
 from datetime import date, time
-from ..models.plant import Plant, PlantType, SoilType, SunExposure
-from ..models.task import Task, TaskType, TaskStatus
-from ..models.harvest import Harvest
-from ..models.garden import Garden
+from models.plant import Plant, PlantType, SoilType, SunExposure
+from models.task import Task, TaskType, TaskStatus
+from models.harvest import Harvest
+from models.garden import Garden
 
 
 class DatabaseManager:

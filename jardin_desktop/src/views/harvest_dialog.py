@@ -12,10 +12,10 @@ from PyQt6.QtGui import QPixmap
 from typing import Optional
 from datetime import date
 
-from ..models.harvest import Harvest
-from ..database.database_manager import DatabaseManager
-from ..models.plant import Plant
-from ..utils.helpers import generate_id
+from models.harvest import Harvest
+from database.database_manager import DatabaseManager
+from models.plant import Plant
+from utils.helpers import generate_id
 
 
 class HarvestDialog(QDialog):

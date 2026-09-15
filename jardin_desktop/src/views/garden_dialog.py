@@ -10,10 +10,10 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt
 from typing import Optional, List
 
-from ..models.garden import Garden
-from ..database.database_manager import DatabaseManager
-from ..models.plant import Plant
-from ..utils.helpers import generate_id
+from models.garden import Garden
+from database.database_manager import DatabaseManager
+from models.plant import Plant
+from utils.helpers import generate_id
 
 
 class GardenDialog(QDialog):

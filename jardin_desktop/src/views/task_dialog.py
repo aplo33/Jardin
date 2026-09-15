@@ -11,10 +11,10 @@ from PyQt6.QtCore import Qt, QDate, QTime
 from typing import Optional
 from datetime import date, time
 
-from ..models.task import Task, TaskType, TaskStatus
-from ..database.database_manager import DatabaseManager
-from ..models.plant import Plant
-from ..utils.helpers import generate_id
+from models.task import Task, TaskType, TaskStatus
+from database.database_manager import DatabaseManager
+from models.plant import Plant
+from utils.helpers import generate_id
 
 
 class TaskDialog(QDialog):

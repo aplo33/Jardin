@@ -12,9 +12,9 @@ from PyQt6.QtGui import QPixmap
 from typing import Optional
 from datetime import date
 
-from ..models.plant import Plant, PlantType, SoilType, SunExposure
-from ..database.database_manager import DatabaseManager
-from ..utils.helpers import generate_id
+from models.plant import Plant, PlantType, SoilType, SunExposure
+from database.database_manager import DatabaseManager
+from utils.helpers import generate_id
 
 
 class PlantDialog(QDialog):

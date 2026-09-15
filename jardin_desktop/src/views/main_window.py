@@ -12,16 +12,16 @@ from PyQt6.QtGui import QAction, QIcon, QPixmap
 from typing import Optional, List
 
 
-from ..database_manager import DatabaseManager
-from ..models.plant import Plant, PlantType, SoilType, SunExposure
-from ..models.task import Task, TaskType, TaskStatus
-from ..models.harvest import Harvest
-from ..models.garden import Garden
+from database.database_manager import DatabaseManager
+from models.plant import Plant, PlantType, SoilType, SunExposure
+from models.task import Task, TaskType, TaskStatus
+from models.harvest import Harvest
+from models.garden import Garden
 from .plant_dialog import PlantDialog
 from .task_dialog import TaskDialog
 from .harvest_dialog import HarvestDialog
 from .garden_dialog import GardenDialog
-from ..utils.helpers import format_date_french, get_season
+from utils.helpers import format_date_french, get_season
 from datetime import date
 
 

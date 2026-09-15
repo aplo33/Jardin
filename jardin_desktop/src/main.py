@@ -7,20 +7,20 @@ de manière simple et intuitive avec une interface native en PyQt6.
 """
 
 import sys
-import os
 from PyQt6.QtWidgets import QApplication
-from src.views.main_window import MainWindow
-from src.database.database_manager import DatabaseManager
+from database.database_manager import DatabaseManager
+from views.main_window import MainWindow
+
 
 # Ajoutez le chemin du projet au PYTHONPATH
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append("C:\\Users\\Poste\\Dev\\Jardin\\jardin_desktop")
 
 def main():
     """Point d'entrée de l'application."""
     app = QApplication(sys.argv)
     app.setApplicationName("Jardin Desktop")
     app.setOrganizationName("JardinApp")
-    
+
     # Initialiser la base de données
     db_manager = DatabaseManager()
     
@@ -30,7 +30,6 @@ def main():
     
     # Démarrer l'application
     sys.exit(app.exec())
-
 
 if __name__ == "__main__":
     main()
