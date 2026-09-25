@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+  
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: system
+        types: [python]
+        stages: [pre-push]
+
+        id: pytest
+        name: pytest 
+        entry: pytest
+        language: system
+        pass_filenames: false
+          
