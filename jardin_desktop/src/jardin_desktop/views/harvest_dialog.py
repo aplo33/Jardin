@@ -2,6 +2,9 @@
 Boîte de dialogue pour ajouter/modifier une récolte.
 """
 
+from jardin_desktop.database.database_manager import DatabaseManager
+from jardin_desktop.models.harvest import Harvest
+from jardin_desktop.utils.helpers import generate_id
 from PyQt6.QtCore import QDate, Qt
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import (
@@ -19,10 +22,6 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
 )
-from jardin_desktop.utils.helpers import generate_id
-
-from jardin_desktop.database.database_manager import DatabaseManager
-from jardin_desktop.models.harvest import Harvest
 
 
 class HarvestDialog(QDialog):

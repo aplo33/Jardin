@@ -2,6 +2,9 @@
 Boîte de dialogue pour ajouter/modifier un jardin.
 """
 
+from jardin_desktop.database.database_manager import DatabaseManager
+from jardin_desktop.models.garden import Garden
+from jardin_desktop.utils.helpers import generate_id
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QDialog,
@@ -16,10 +19,6 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
 )
-
-from jardin_desktop.database.database_manager import DatabaseManager
-from jardin_desktop.models.garden import Garden
-from jardin_desktop.utils.helpers import generate_id
 
 
 class GardenDialog(QDialog):

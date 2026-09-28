@@ -5,6 +5,12 @@ Fenêtre principale de l'application Jardin Desktop.
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from jardin_desktop.database.database_manager import DatabaseManager
+from jardin_desktop.models.garden import Garden
+from jardin_desktop.models.harvest import Harvest
+from jardin_desktop.models.plant import Plant
+from jardin_desktop.models.task import Task, TaskStatus
+from jardin_desktop.utils.helpers import format_date_french, get_season
 from PyQt6.QtCore import Qt, pyqtSignal
 from PyQt6.QtGui import QAction, QIcon
 from PyQt6.QtWidgets import (
@@ -22,13 +28,6 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from jardin_desktop.utils.helpers import format_date_french, get_season
-
-from jardin_desktop.database.database_manager import DatabaseManager
-from jardin_desktop.models.garden import Garden
-from jardin_desktop.models.harvest import Harvest
-from jardin_desktop.models.plant import Plant
-from jardin_desktop.models.task import Task, TaskStatus
 
 from .garden_dialog import GardenDialog
 from .harvest_dialog import HarvestDialog

@@ -4,6 +4,7 @@ Boîte de dialogue pour ajouter/modifier une plante.
 
 from jardin_desktop.database.database_manager import DatabaseManager
 from jardin_desktop.models.plant import Plant, PlantType, SoilType, SunExposure
+from jardin_desktop.utils.helpers import generate_id
 from PyQt6.QtCore import QDate, Qt
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import (
@@ -21,7 +22,6 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
 )
-from jardin_desktop.utils.helpers import generate_id
 
 
 class PlantDialog(QDialog):
