@@ -1,14 +1,16 @@
 """
 Modèle pour les tâches dans l'application Jardin.
 """
+
 from dataclasses import dataclass
-from typing import Optional
-from datetime import date, time
+from datetime import date, datetime, time
 from enum import Enum
+from zoneinfo import ZoneInfo
 
 
 class TaskType(Enum):
     """Type de tâche."""
+
     ARROSAGE = "Arrosage"
     TAILLE = "Taille"
     DESHERBAGE = "Désherbage"
@@ -19,6 +21,7 @@ class TaskType(Enum):
 
 class TaskStatus(Enum):
     """Statut de la tâche."""
+
     A_FAIRE = "À faire"
     EN_COURS = "En cours"
     TERMINE = "Terminé"
@@ -28,7 +31,7 @@ class TaskStatus(Enum):
 class Task:
     """
     Représente une tâche dans le jardin.
-    
+
     Attributes:
         id: Identifiant unique de la tâche.
         title: Titre de la tâche.
@@ -41,34 +44,35 @@ class Task:
         notes: Notes supplémentaires.
         completed_date: Date de complétion.
     """
+
     id: int
     title: str
     description: str = ""
     task_type: TaskType = TaskType.AUTRE
-    due_date: Optional[date] = None
-    due_time: Optional[time] = None
+    due_date: date | None = None
+    due_time: time | None = None
     status: TaskStatus = TaskStatus.A_FAIRE
-    plant_id: Optional[int] = None
+    plant_id: int | None = None
     notes: str = ""
-    completed_date: Optional[date] = None
-    
+    completed_date: date | None = None
+
     def is_overdue(self) -> bool:
         """
         Vérifie si la tâche est en retard.
-        
+
         Returns:
             bool: True si la tâche est en retard, False sinon.
         """
         if self.due_date is None or self.status == TaskStatus.TERMINE:
             return False
-        
-        today = date.today()
+
+        today = datetime.now(ZoneInfo("Europe/Paris")).date()
         return today > self.due_date
-    
+
     def to_dict(self) -> dict:
         """
         Convertit l'objet Task en dictionnaire pour la sauvegarde.
-        
+
         Returns:
             dict: Dictionnaire représentant la tâche.
         """
@@ -82,17 +86,19 @@ class Task:
             "status": self.status.value,
             "plant_id": self.plant_id,
             "notes": self.notes,
-            "completed_date": self.completed_date.isoformat() if self.completed_date else None,
+            "completed_date": (
+                self.completed_date.isoformat() if self.completed_date else None
+            ),
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "Task":
         """
         Crée une instance de Task à partir d'un dictionnaire.
-        
+
         Args:
             data: Dictionnaire contenant les données de la tâche.
-            
+
         Returns:
             Task: Instance de Task.
         """
@@ -101,10 +107,18 @@ class Task:
             title=data["title"],
             description=data.get("description", ""),
             task_type=TaskType(data.get("task_type", "Autre")),
-            due_date=date.fromisoformat(data["due_date"]) if data.get("due_date") else None,
-            due_time=time.fromisoformat(data["due_time"]) if data.get("due_time") else None,
+            due_date=(
+                date.fromisoformat(data["due_date"]) if data.get("due_date") else None
+            ),
+            due_time=(
+                time.fromisoformat(data["due_time"]) if data.get("due_time") else None
+            ),
             status=TaskStatus(data.get("status", "À faire")),
             plant_id=data.get("plant_id"),
             notes=data.get("notes", ""),
-            completed_date=date.fromisoformat(data["completed_date"]) if data.get("completed_date") else None,
+            completed_date=(
+                date.fromisoformat(data["completed_date"])
+                if data.get("completed_date")
+                else None
+            ),
         )

@@ -1,8 +1,8 @@
 """
 Modèle pour les récoltes dans l'application Jardin.
 """
+
 from dataclasses import dataclass
-from typing import Optional
 from datetime import date
 
 
@@ -10,7 +10,7 @@ from datetime import date
 class Harvest:
     """
     Représente une récolte dans le jardin.
-    
+
     Attributes:
         id: Identifiant unique de la récolte.
         plant_id: ID de la plante associée.
@@ -20,23 +20,24 @@ class Harvest:
         notes: Notes supplémentaires.
         image_path: Chemin vers une image de la récolte.
     """
+
     id: int
     plant_id: int
     date: date
     quantity: float
     unit: str = "kg"
     notes: str = ""
-    image_path: Optional[str] = None
-    
+    image_path: str | None = None
+
     def __post_init__(self):
         """Validation des données après initialisation."""
         if self.quantity <= 0:
             raise ValueError("La quantité récoltée doit être supérieure à 0.")
-    
+
     def to_dict(self) -> dict:
         """
         Convertit l'objet Harvest en dictionnaire pour la sauvegarde.
-        
+
         Returns:
             dict: Dictionnaire représentant la récolte.
         """
@@ -49,15 +50,15 @@ class Harvest:
             "notes": self.notes,
             "image_path": self.image_path,
         }
-    
+
     @classmethod
     def from_dict(cls, data: dict) -> "Harvest":
         """
         Crée une instance de Harvest à partir d'un dictionnaire.
-        
+
         Args:
             data: Dictionnaire contenant les données de la récolte.
-            
+
         Returns:
             Harvest: Instance de Harvest.
         """
