@@ -19,7 +19,7 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
 )
-from utils.helpers import generate_id
+from jardin_desktop.utils.helpers import generate_id
 
 from jardin_desktop.database.database_manager import DatabaseManager
 from jardin_desktop.models.harvest import Harvest

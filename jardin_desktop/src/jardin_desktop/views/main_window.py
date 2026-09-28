@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from utils.helpers import format_date_french, get_season
+from jardin_desktop.utils.helpers import format_date_french, get_season
 
 from jardin_desktop.database.database_manager import DatabaseManager
 from jardin_desktop.models.garden import Garden

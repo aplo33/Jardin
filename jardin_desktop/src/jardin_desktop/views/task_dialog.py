@@ -2,8 +2,8 @@
 Boîte de dialogue pour ajouter/modifier une tâche.
 """
 
-from database.database_manager import DatabaseManager
-from models.task import Task, TaskStatus, TaskType
+from jardin_desktop.database.database_manager import DatabaseManager
+from jardin_desktop.models.task import Task, TaskStatus, TaskType
 from PyQt6.QtCore import QDate, Qt, QTime
 from PyQt6.QtWidgets import (
     QComboBox,
@@ -18,7 +18,7 @@ from PyQt6.QtWidgets import (
     QTimeEdit,
     QVBoxLayout,
 )
-from utils.helpers import generate_id
+from jardin_desktop.utils.helpers import generate_id
 
 
 class TaskDialog(QDialog):
