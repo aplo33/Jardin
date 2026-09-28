@@ -259,12 +259,12 @@ class PlantDialog(QDialog):
                 plant_type=PlantType(self.type_combo.currentText()),
                 variety=self.variety_edit.text().strip(),
                 planting_date=(
-                    self.planting_date_edit.date().toPython()
+                    self.planting_date_edit.date().toPyDate
                     if self.planting_date_edit.date().isValid()
                     else None
                 ),
                 harvest_date=(
-                    self.harvest_date_edit.date().toPython()
+                    self.harvest_date_edit.date().toPyDate()
                     if self.harvest_date_edit.date().isValid()
                     else None
                 ),
@@ -272,7 +272,7 @@ class PlantDialog(QDialog):
                 sun_exposure=SunExposure(self.sun_combo.currentText()),
                 watering_frequency=self.watering_spin.value(),
                 last_watering=(
-                    self.last_watering_edit.date().toPython()
+                    self.last_watering_edit.date().toPyDate()
                     if self.last_watering_edit.date().isValid()
                     else None
                 ),
@@ -293,12 +293,12 @@ class PlantDialog(QDialog):
             self.plant.plant_type = PlantType(self.type_combo.currentText())
             self.plant.variety = self.variety_edit.text().strip()
             self.plant.planting_date = (
-                self.planting_date_edit.date().toPython()
+                self.planting_date_edit.date().toPyDate()
                 if self.planting_date_edit.date().isValid()
                 else None
             )
             self.plant.harvest_date = (
-                self.harvest_date_edit.date().toPython()
+                self.harvest_date_edit.date().toPyDate()
                 if self.harvest_date_edit.date().isValid()
                 else None
             )
@@ -306,7 +306,7 @@ class PlantDialog(QDialog):
             self.plant.sun_exposure = SunExposure(self.sun_combo.currentText())
             self.plant.watering_frequency = self.watering_spin.value()
             self.plant.last_watering = (
-                self.last_watering_edit.date().toPython()
+                self.last_watering_edit.date().toPyDate()
                 if self.last_watering_edit.date().isValid()
                 else None
             )
