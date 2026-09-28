@@ -7,13 +7,14 @@ de manière simple et intuitive avec une interface native en PyQt6.
 """
 
 import sys
-from PyQt6.QtWidgets import QApplication
-from database.database_manager import DatabaseManager
-from views.main_window import MainWindow
 
+from jardin_desktop.database.database_manager import DatabaseManager
+from jardin_desktop.views.main_window import MainWindow
+from PyQt6.QtWidgets import QApplication
 
 # Ajoutez le chemin du projet au PYTHONPATH
 sys.path.append("C:\\Users\\Poste\\Dev\\Jardin\\jardin_desktop")
+
 
 def main():
     """Point d'entrée de l'application."""
@@ -23,13 +24,14 @@ def main():
 
     # Initialiser la base de données
     db_manager = DatabaseManager()
-    
+
     # Créer et afficher la fenêtre principale
     window = MainWindow(db_manager)
     window.showMaximized()
-    
+
     # Démarrer l'application
     sys.exit(app.exec())
+
 
 if __name__ == "__main__":
     main()
