@@ -1,29 +1,30 @@
 """
 Fonctions utilitaires pour l'application Jardin.
 """
+
 import random
-from datetime import date
-from typing import Optional
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 
 def generate_id() -> int:
     """
     Génère un ID unique aléatoire.
-    
+
     Returns:
         int: Un ID unique.
     """
     return random.randint(1, 1000000)
 
 
-def format_date(d: Optional[date], format_str: str = "%d/%m/%Y") -> str:
+def format_date(d: date | None, format_str: str = "%d/%m/%Y") -> str:
     """
     Formate une date en chaîne de caractères.
-    
+
     Args:
         d: Date à formater (peut être None).
         format_str: Format de sortie (par défaut: JJ/MM/AAAA).
-        
+
     Returns:
         str: Date formatée ou chaîne vide si d est None.
     """
@@ -32,47 +33,69 @@ def format_date(d: Optional[date], format_str: str = "%d/%m/%Y") -> str:
     return d.strftime(format_str)
 
 
-def format_date_french(d: Optional[date]) -> str:
+def format_date_french(d: date | None) -> str:
     """
     Formate une date en français (ex: 15 janvier 2025).
-    
+
     Args:
         d: Date à formater (peut être None).
-        
+
     Returns:
         str: Date formatée en français ou chaîne vide si d est None.
     """
     if d is None:
         return ""
-    
+
     months = [
-        "janvier", "février", "mars", "avril", "mai", "juin",
-        "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
     ]
     return f"{d.day} {months[d.month - 1]} {d.year}"
 
 
-def get_season(d: Optional[date] = None) -> str:
+def get_season(d: date | None = None) -> str:
     """
     Détermine la saison en fonction d'une date.
-    
+
     Args:
         d: Date à évaluer (par défaut: date actuelle).
-        
+
     Returns:
         str: Saison (Printemps, Été, Automne, Hiver).
     """
     if d is None:
-        d = date.today()
-    
+        d = datetime.now(ZoneInfo("Europe/Paris")).date()
+
     month = d.month
     day = d.day
-    
-    if (month == 3 and day >= 21) or (month == 4 or month == 5) or (month == 6 and day <= 20):
+
+    if (
+        (month == 3 and day >= 21)
+        or (month == 4 or month == 5)
+        or (month == 6 and day <= 20)
+    ):
         return "Printemps"
-    elif (month == 6 and day >= 21) or (month == 7 or month == 8) or (month == 9 and day <= 20):
+    elif (
+        (month == 6 and day >= 21)
+        or (month == 7 or month == 8)
+        or (month == 9 and day <= 20)
+    ):
         return "Été"
-    elif (month == 9 and day >= 21) or (month == 10 or month == 11) or (month == 12 and day <= 20):
+    elif (
+        (month == 9 and day >= 21)
+        or (month == 10 or month == 11)
+        or (month == 12 and day <= 20)
+    ):
         return "Automne"
     else:
         return "Hiver"
@@ -81,11 +104,11 @@ def get_season(d: Optional[date] = None) -> str:
 def get_watering_advice(plant_type: str, season: str) -> str:
     """
     Donne des conseils d'arrosage en fonction du type de plante et de la saison.
-    
+
     Args:
         plant_type: Type de plante (ex: "Légume", "Fleur", etc.).
         season: Saison actuelle.
-        
+
     Returns:
         str: Conseil d'arrosage.
     """
@@ -115,5 +138,7 @@ def get_watering_advice(plant_type: str, season: str) -> str:
             "Hiver": "Arroser très peu.",
         },
     }
-    
-    return advice.get(plant_type, {}).get(season, "Arroser selon les besoins de la plante.")
+
+    return advice.get(plant_type, {}).get(
+        season, "Arroser selon les besoins de la plante."
+    )
