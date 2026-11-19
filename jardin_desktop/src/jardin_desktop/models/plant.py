@@ -3,7 +3,7 @@ Modèle pour les plantes dans l'application Jardin.
 """
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import date, datetime
 from enum import Enum
 from zoneinfo import ZoneInfo
 
@@ -63,12 +63,12 @@ class Plant:
     description: str = ""
     plant_type: PlantType = PlantType.AUTRE
     variety: str = ""
-    planting_date: datetime.date | None = None
-    harvest_date: datetime.date | None = None
+    planting_date: date | None = None
+    harvest_date: date | None = None
     soil_type: SoilType = SoilType.ARGILEUX
     sun_exposure: SunExposure = SunExposure.PLEIN_SOLEIL
     watering_frequency: int = 7  # En jours
-    last_watering: datetime.date | None = None
+    last_watering: date | None = None
     notes: str = ""
     image_path: str | None = None
 
@@ -139,12 +139,12 @@ class Plant:
             plant_type=PlantType(data.get("plant_type", "Autre")),
             variety=data.get("variety", ""),
             planting_date=(
-                datetime.date.fromisoformat(data["planting_date"])
+                date.fromisoformat(data["planting_date"])
                 if data.get("planting_date")
                 else None
             ),
             harvest_date=(
-                datetime.date.fromisoformat(data["harvest_date"])
+                date.fromisoformat(data["harvest_date"])
                 if data.get("harvest_date")
                 else None
             ),
@@ -152,7 +152,7 @@ class Plant:
             sun_exposure=SunExposure(data.get("sun_exposure", "Plein soleil")),
             watering_frequency=data.get("watering_frequency", 7),
             last_watering=(
-                datetime.date.fromisoformat(data["last_watering"])
+                date.fromisoformat(data["last_watering"])
                 if data.get("last_watering")
                 else None
             ),

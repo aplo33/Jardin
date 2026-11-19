@@ -31,6 +31,7 @@ from PyQt6.QtWidgets import (
 
 from .garden_dialog import GardenDialog
 from .harvest_dialog import HarvestDialog
+from .plan_editor import PlanEditor
 from .plant_dialog import PlantDialog
 from .task_dialog import TaskDialog
 
@@ -156,6 +157,7 @@ class MainWindow(QMainWindow):
             ("Tâches", "tasks"),
             ("Récoltes", "harvests"),
             ("Jardins", "gardens"),
+            ("Plan du potager", "plan"),
             ("Statistiques", "stats"),
             ("Calendrier", "calendar"),
         ]
@@ -194,6 +196,10 @@ class MainWindow(QMainWindow):
         # Page Jardins
         self.gardens_page = self._create_gardens_page()
         self.stacked_widget.addWidget(self.gardens_page)
+
+        # Page Plan du potager
+        self.plan_page = PlanEditor()
+        self.stacked_widget.addWidget(self.plan_page)
 
         # Page Statistiques
         self.stats_page = self._create_stats_page()
@@ -882,7 +888,15 @@ class MainWindow(QMainWindow):
     def _on_new_item(self) -> None:
         """Gère l'ajout d'un nouvel élément."""
         current_page = self.stacked_widget.currentIndex()
-        page_names = ["plants", "tasks", "harvests", "gardens", "stats", "calendar"]
+        page_names = [
+            "plants",
+            "tasks",
+            "harvests",
+            "gardens",
+            "plan",
+            "stats",
+            "calendar",
+        ]
         current_page_name = page_names[current_page]
 
         if current_page_name == "plants":
